@@ -1,0 +1,97 @@
+<div class="table_full" id="body">
+  <table width="100%">
+    <col class="th"/>
+    <col width="400"/>
+    <col/>
+    <%= render :partial => 'subject_form' %>
+    <tbody id="choice" style="display: none;">
+    <% unless @subject.subject_type == 'true-false' %>
+        <% @subject.answers.each do |answer| %>
+            <tr>
+              <th>
+                <input type="text" readonly="readonly" name="sign[]" value="<%= answer.sign %>" class="input length_0 input_hd required"/>:
+              </th>
+              <td>
+                <input type="text" name="content[]" class="input length_10 input_hd required" value="<%= answer.content %>"/>
+                <input type="hidden" name="ids[]" value="<%= answer.id %>">
+              </td>
+              <td>
+                <div class="fun_tips"></div>
+              </td>
+            </tr>
+        <% end %>
+    <% end %>
+    <tr>
+      <th>答案:</th>
+      <td>
+        <input type="text" name="answer" value="<%= @subject.answer %>" class="input length_10 input_hd required"/>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    </tbody>
+
+    <tbody id="true-false" style="display: none;">
+    <tr>
+      <th>答案:</th>
+      <td>
+        <select name="answer" class="length_5 required">
+          <%= options_for_select(true_or_false_list, @subject.answer) %>
+        </select>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="p10"></div>
+<div class="cc">
+  <div class="btn_wrap_pd">
+    <button class="btn  btn_success" id="btn" type="submit">保存</button>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        initFields($('#subject_type').val());
+        $('#subject_type').change(function () {
+            initFields($(this).val());
+        });
+
+        $('#subject_type').change(function () {
+            if ($(this).val() == 'true-false') {
+                $('#choice').hide();
+                $('#true-false').show();
+            } else if ($(this).val() == 'single' || $(this).val() == 'multiple') {
+                $('#choice').show();
+                $('#true-false').hide();
+            }
+        });
+
+        $('#btn').click(function () {
+            if ($('#subject_type').val() == 'true-false') {
+                $('#choice').remove();
+            } else if ($('#subject_type').val() == 'single' || $('#subject_type').val() == 'multiple') {
+                $('#true-false').remove();
+            }
+        });
+    })
+
+    var initFields = function (type) {
+        switch (type) {
+            case 'true-false' :
+                $('#true-false').show();
+                break;
+            case 'single' :
+                $('#choice').show();
+                break;
+            case 'multiple' :
+                $('#choice').show();
+                break;
+        }
+    }
+
+</script>

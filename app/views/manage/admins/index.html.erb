@@ -1,0 +1,41 @@
+<div class="search_type cc mb10">
+  <div class="h_a">运维用户列表</div>
+</div>
+
+<div class="table_list">
+  <table width="100%">
+    <colgroup>
+      <col/>
+      <col/>
+      <col/>
+      <col/>
+    </colgroup>
+    <thead>
+    <tr>
+      <td>ID</td>
+      <td>帐号</td>
+      <td>姓名</td>
+      <td>角色</td>
+      <td>操作</td>
+    </tr>
+    </thead>
+    <% @admins.each do |admin| %>
+        <tr>
+          <td><%= admin.id %></td>
+          <td><%= admin.login %></td>
+          <td><%= admin.name %></td>
+          <td><%= role_text admin.role %></td>
+          <td><a href="/manage/admins/<%= admin.id %>/edit" class="btn btn_success">编辑</a>
+          <%= link_to '删除',
+                      {:controller => :admins, :action => 'destroy', :id => admin.id},
+                      {:method => :delete, :confirm => '你确定要删除此用户吗?', :class => 'btn btn_error'}
+          %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+<div><a href="/manage/admins/new" class="btn"><span class="add"></span>新增用户</a></div>
+<div class="p10 pages">
+  <%= will_paginate @admins %>
+</div>

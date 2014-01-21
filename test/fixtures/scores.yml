@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  totle_score: 1
+  all_score: MyString
+  status: MyString
+  reason: MyString
+  exam_date: MyString
+  air: MyString
+  subjects: MyString
+
+two:
+  user_id: 1
+  totle_score: 1
+  all_score: MyString
+  status: MyString
+  reason: MyString
+  exam_date: MyString
+  air: MyString
+  subjects: MyString

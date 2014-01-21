@@ -1,0 +1,51 @@
+<div class="table_full">
+  <table width="100%">
+    <col class="th"/>
+    <col width="400"/>
+    <col/>
+    <tr>
+      <th>帐号</th>
+      <td>
+        <input type="text" name="login" class="input length_5 input_hd required" value="<%= @admin.login %>"/>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    <tr>
+      <th>姓名</th>
+      <td>
+        <input type="text" name="name" class="input length_5 required" value="<%= @admin.name %>"/>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    <tr>
+      <th>角色</th>
+      <td>
+        <select name="role">
+          <%= options_for_select(role_list, @admin[:role]) %>
+        </select>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    <tr>
+      <th>密码</th>
+      <td>
+        <input type="password" name="password" class="input length_5 <%if not @admin.id %> required <% end %>" value=""/>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="p10"></div>
+<div class="cc">
+  <div class="btn_wrap_pd">
+    <button class="btn btn_submit" type="submit">保存</button>
+  </div>
+</div>

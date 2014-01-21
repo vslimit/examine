@@ -1,0 +1,4 @@
+<div class="h_a">类型编辑 [<%= @category.name %>]</div>
+<%= form_tag "/manage/categories/#{@category.id}", method: 'put' do %>
+<%= render :partial => 'manage/categories/form' %>
+<% end %>

@@ -1,0 +1,82 @@
+<div class="h_a">查看试题</div>
+<div class="table_full" id="body">
+  <table width="100%">
+    <col class="th"/>
+    <col width="400"/>
+    <col/>
+
+    <tbody id="show_subject_info">
+    <tr>
+      <th>类型:</th>
+      <td>
+        <%= @subject.category.name %>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>题型:</th>
+      <td>
+        <%= Profile.dic_val @subject.subject_type %>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    <tr>
+      <th>机型:</th>
+      <td>
+        <%= @subject.air %>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>题目:</th>
+      <td>
+        <%= @subject.title %>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    <tr>
+      <th>答案:</th>
+      <td>
+        <%= @subject.answer %>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    <% unless @subject.subject_type == 'true-false' %>
+        <% @subject.answers.each do |answer| %>
+            <tr>
+              <th><%=answer.sign%>:</th>
+              <td>
+                <%= answer.content %>
+              </td>
+              <td>
+              </td>
+            </tr>
+        <% end %>
+    <% end %>
+
+
+    </tbody>
+  </table>
+</div>
+<div class="p10"></div>
+<div class="cc">
+  <!--<div class="btn_wrap_pd">-->
+    <!--<button class="btn  btn_success" id="btn" type="submit">保存</button>-->
+  <!--</div>-->
+</div>
+
+
+
+

@@ -1,0 +1,4 @@
+<div class="h_a">用户编辑 [<%= @system_user.name %>]</div>
+<%= form_tag "/manage/admins/#{@system_user.id}", method: 'put' do %>
+<%= render :partial => 'manage/admins/form' %>
+<% end %>

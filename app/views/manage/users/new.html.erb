@@ -1,0 +1,4 @@
+<div class="h_a">新增用户</div>
+<%= form_tag '/manage/users', method: 'post' do %>
+    <%= render :partial => 'manage/users/form' %>
+<% end %>

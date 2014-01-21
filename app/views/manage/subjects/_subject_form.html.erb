@@ -1,0 +1,45 @@
+<tr>
+  <th>类型:</th>
+  <td>
+    <select name="category_id" class="length_5 required">
+      <%= options_for_select(category_all_list, @subject.category_id) %>
+    </select>
+  </td>
+  <td>
+    <div class="fun_tips"></div>
+  </td>
+</tr>
+
+<tr>
+  <th>题型:</th>
+  <td>
+    <select name="subject_type" id="subject_type" class="length_5 required">
+      <%= options_for_select(subject_type_list, @subject.subject_type) %>
+    </select>
+  </td>
+  <td>
+    <div class="fun_tips"></div>
+  </td>
+</tr>
+<tr>
+  <th>机型:</th>
+  <td>
+    <select name="air" id="air" class="length_5 required">
+      <%= options_for_select(air_list, @subject.air) %>
+    </select>
+  </td>
+  <td>
+    <div class="fun_tips"></div>
+  </td>
+</tr>
+
+<tr>
+  <th>题目:</th>
+  <td>
+    <input type="text" name="title" value="<%= @subject.title %>" class="input length_10 input_hd required"/>
+  </td>
+  <td>
+    <div class="fun_tips"></div>
+  </td>
+</tr>
+

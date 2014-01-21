@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dic_key: MyString
+  dic_value: MyString
+
+two:
+  dic_key: MyString
+  dic_value: MyString

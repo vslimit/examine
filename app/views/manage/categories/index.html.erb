@@ -1,0 +1,64 @@
+<div class="search_type cc mb10">
+  <div class="h_a">类型列表</div>
+  <%= search_form_for @search, :url => '/manage/categories',
+                      :html => {:method => :get} do |f| %>
+      <div class="search_type cc mb10">
+        <div class="ul_wrap">
+          <ul class="cc">
+           <li>
+              <%= f.label(:name_cont, '关键字') %>
+              <%= f.text_field :name_cont, class: 'input length_3' %>
+            </li>
+          </ul>
+        </div>
+        <div class="btn_side">
+          <%= f.submit('搜索', class: 'btn btn_success mr20') %>
+        </div>
+      </div>
+  <% end %>
+</div>
+<div class="table_list">
+  <table width="100%">
+    <!--<colgroup>-->
+    <!--<col width="200">-->
+    <!--<col />-->
+    <!--</colgroup>-->
+    <% if @categories.size > 0 %>
+        <thead>
+        <tr>
+          <td>ID</td>
+          <td>编号</td>
+          <td>类型</td>
+          <td>父类</td>
+          <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <% @categories.each do |category| %>
+            <tr>
+              <td>
+                <%= category.id %></td>
+              <td>
+                <%= category.code %></td>
+              <td>
+                <%= category.name %></td>
+              <td>
+                <%= category.pid == 0 ? '无' : category.parent_category.name %></td>
+              <td>
+                <a href="/manage/categories/<%= category.id %>/edit" class="btn btn_success mr10 various fancybox.iframe">编辑</a>
+                <%= link_to '删除',
+                            {:controller => :categories, :action => 'destroy', :id => category.id},
+                            {:method => :delete, :confirm => '你确定要删除此试题吗?', :class => 'btn btn_error'}
+                %>
+              </td>
+
+            </tr>
+        <% end %>
+        </tbody>
+
+    <% end %>
+  </table>
+</div>
+<div class="p10 pages">
+  <%= will_paginate @categories %>
+</div>

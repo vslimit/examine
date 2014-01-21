@@ -1,0 +1,22 @@
+development:
+  image_servers: http://127.0.0.1
+  upload_dir: uploads
+  memcached_addr: 127.0.0.1:11211
+  core_interface_url: http://127.0.0.1:9292
+
+
+staging:
+  image_server_domain: xzyele.com
+  upload_dir: merchant_pictures
+  memcached_addr: 127.0.0.1:11211
+  core_interface_url: http://127.0.0.1:9292
+
+test:
+  image_servers: http://img0.xzyele.com|http://img1.xzyele.com|http://img2.xzyele.com
+  upload_dir: uploads
+  core_interface_url: http://127.0.0.1:9292
+
+production:
+  image_server_domain: aishua.cn
+  upload_dir: merchant_pictures
+  core_interface_url: http://127.0.0.1:9292

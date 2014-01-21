@@ -1,0 +1,4 @@
+<div class="h_a">设置编辑 [<%= @profile.dic_key %>]</div>
+<%= form_tag "/manage/profiles/#{@profile.id}", method: 'put' do %>
+<%= render :partial => 'manage/profiles/form' %>
+<% end %>

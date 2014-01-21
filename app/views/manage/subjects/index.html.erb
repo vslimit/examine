@@ -1,0 +1,83 @@
+<div class="search_type cc mb10">
+  <div class="h_a">试题列表</div>
+  <%= search_form_for @search, :url => '/manage/subjects',
+                      :html => {:method => :get} do |f| %>
+      <div class="search_type cc mb10">
+        <div class="ul_wrap">
+          <ul class="cc">
+            <li>
+              <label>关键字：</label>
+              <input type="text" class="input length_3" name="title_cont" value="<%= params[:title] %>" />
+            </li>
+            <li>
+              <label>机型：</label>
+              <select name="status">
+                <%= options_for_select(air_list, params[:air]) %>
+              </select>
+            </li>
+            <li>
+              <label>题型：</label>
+              <select name="status">
+                <%= options_for_select(air_list, params[:air]) %>
+              </select>
+            </li>
+          </ul>
+        </div>
+        <div class="btn_side">
+          <%= f.submit('搜索', class: 'btn btn_success mr20') %>
+        </div>
+      </div>
+  <% end %>
+</div>
+<div class="table_list">
+  <table width="100%">
+    <!--<colgroup>-->
+    <!--<col width="200">-->
+    <!--<col />-->
+    <!--</colgroup>-->
+    <% if @subjects.size > 0 %>
+        <thead>
+        <tr>
+          <td>ID</td>
+          <td>题目</td>
+          <td>答案</td>
+          <td>机型</td>
+          <td>类型</td>
+          <td>题型</td>
+          <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <% @subjects.each do |subject| %>
+            <tr>
+              <td>
+                <%= subject.id %></td>
+              <td>
+                <%= subject.title %></td>
+              <td>
+                <%= subject.answer %></td>
+              <td>
+                <%= subject.air %></td>
+              <td>
+                <%= subject.category.name %></td>
+              <td>
+                <%= Profile.dic_val subject.subject_type %></td>
+              <td>
+                <a href="/manage/subjects/<%= subject.id %>" class="btn btn_submit mr10 various500 ">查看</a>
+                <a href="/manage/subjects/<%= subject.id %>/edit" class="btn btn_success mr10 various500 ">编辑</a>
+                <%= link_to '删除',
+                            {:controller => :subjects, :action => 'destroy', :id => subject.id},
+                            {:method => :delete, :confirm => '你确定要删除此试题吗?', :class => 'btn btn_error'}
+                %>
+              </td>
+
+            </tr>
+        <% end %>
+        </tbody>
+
+    <% end %>
+  </table>
+</div>
+<div class="p10 pages">
+  <%= will_paginate @subjects %>
+</div>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  score: 1
+  status: MyString
+  reason: MyString
+  card_no: MyString
+  exam_date: MyString
+  air: MyString
+
+two:
+  name: MyString
+  score: 1
+  status: MyString
+  reason: MyString
+  card_no: MyString
+  exam_date: MyString
+  air: MyString

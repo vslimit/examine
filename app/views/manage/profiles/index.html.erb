@@ -1,0 +1,64 @@
+<div class="search_type cc mb10">
+  <div class="h_a">配置列表</div>
+  <%= search_form_for @search, :url => '/manage/profiles',
+                      :html => {:method => :get} do |f| %>
+      <div class="search_type cc mb10">
+        <div class="ul_wrap">
+          <ul class="cc">
+           <li>
+              <%= f.label(:dic_value_cont, '关键字') %>
+              <%= f.text_field :dic_value_cont, class: 'input length_3' %>
+            </li>
+          </ul>
+        </div>
+        <div class="btn_side">
+          <%= f.submit('搜索', class: 'btn btn_success mr20') %>
+        </div>
+      </div>
+  <% end %>
+</div>
+<div class="table_list">
+  <table width="100%">
+    <!--<colgroup>-->
+    <!--<col width="200">-->
+    <!--<col />-->
+    <!--</colgroup>-->
+    <% if @profiles.size > 0 %>
+        <thead>
+        <tr>
+          <td>ID</td>
+          <td>配置编码</td>
+          <td>配置名称</td>
+          <td>配置类型</td>
+          <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <% @profiles.each do |profile| %>
+            <tr>
+              <td>
+                <%= profile.id %></td>
+              <td>
+                <%= profile.dic_key %></td>
+              <td>
+                <%= profile.dic_value %></td>
+              <td>
+                <%= profile.dic_type_name %></td>
+              <td>
+                <a href="/manage/profiles/<%= profile.id %>/edit" class="btn btn_success mr10 various fancybox.iframe">编辑</a>
+                <%= link_to '删除',
+                            {:controller => :profiles, :action => 'destroy', :id => profile.id},
+                            {:method => :delete, :confirm => '你确定要删除此配置吗?', :class => 'btn btn_error'}
+                %>
+              </td>
+
+            </tr>
+        <% end %>
+        </tbody>
+
+    <% end %>
+  </table>
+</div>
+<div class="p10 pages">
+  <%= will_paginate @profiles %>
+</div>

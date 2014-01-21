@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>核心业务平台管理系统</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" type="text/css" href="/css/admin/main.css" />
+    <link rel="stylesheet" type="text/css" href="/scripts/jquery_ui_datepicker/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="/scripts/jquery_dropdown/jquery.dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="/scripts/jquery_fancybox/jquery.fancybox.css" />
+    <script type="text/javascript" src="/scripts/jquery_ui_datepicker/js/jquery-ui-1.10.3.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <noscript><h1 class="noscript">您已禁用脚本，这样会导致页面不可用，请启用脚本后刷新页面</h1></noscript>
+
+    <div class="ch-content-wrap">
+        <% unless  flash[:success].nil? %>
+            <div class="tips_block tips_success">
+                <%= flash[:success] %>
+            </div>
+        <% end %>
+
+        <% unless  flash[:error].nil? %>
+            <div class="tips_block tips_error">
+                <%= flash[:error] %>
+            </div>
+        <% end %>
+        <%= yield %>
+    </div>
+
+</div>
+<script type="text/javascript" src=/scripts/jquery_dropdown/jquery.dropdown.js></script>
+<script type="text/javascript" src="/scripts/jquery_ui_datepicker/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src=/scripts/jquery_fancybox/jquery.fancybox.js></script>
+<script type="text/javascript" src="/scripts/jquery.validate.js"></script>
+<script type="text/javascript" src="/scripts/jquery.validate.msg_cn.js"></script>
+<script type="text/javascript" src="/scripts/main.js"></script>
+</body>
+</html>

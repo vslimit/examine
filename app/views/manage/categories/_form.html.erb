@@ -1,0 +1,45 @@
+<div class="table_full">
+  <table width="100%">
+    <col class="th"/>
+    <col width="400"/>
+    <col/>
+    <tr>
+      <th>父类:</th>
+      <td>
+        <select name="pid" class="length_5 required">
+          <%= options_for_select(category_list('全部分类'),@category.pid) %>
+        </select>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>类型名称:</th>
+      <td>
+        <input type="text" name="name" value="<%= @category.name %>" class="input length_5 input_hd required"/>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>类型编码:</th>
+      <td>
+        <input type="text" name="code" value="<%= @category.code %>" class="input length_5 input_hd required"/>
+      </td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+
+  </table>
+</div>
+<div class="p10"></div>
+<div class="cc">
+  <div class="btn_wrap_pd">
+    <button class="btn  btn_success" type="submit">保存</button>
+  </div>
+</div>
