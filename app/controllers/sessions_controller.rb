@@ -10,21 +10,33 @@ class SessionsController < ApplicationController
 
   def create
     destroy_session
-    username = params[:username]
-    password = params[:password]
-    #system_user = CoreLib::SystemUser.where({:name => username}).first
-    #if system_user and system_user.authenticate(password)
-    #  create_session system_user
-    #record_activities('登录','登录',"[#{params[:username]}]登录系统")
-    redirect_to '/merchant/merchant_stores'
-    #else
-    #  flash[:error] = Tips::LOGIN_ERROR
-    #  redirect_to :root
-    #end
+  end
+
+  def notice
+
   end
 
   def logout
     destroy_session
     redirect_to :root
+  end
+
+  def create
+    destroy_session
+    card_no = params[:login]
+    #password = params[:password]
+    user = User.where({:card_no => card_no}).first
+    if user
+      create_session user
+      redirect_to '/examines'
+    else
+      flash[:error] = Tips::LOGIN_ERROR
+      redirect_to '/login'
+    end
+  end
+
+  def logout
+    destroy_manage_session
+    redirect_to '/login'
   end
 end

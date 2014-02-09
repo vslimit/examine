@@ -6,8 +6,8 @@
     <tr>
       <th>父类:</th>
       <td>
-        <select name="pid" class="length_5 required">
-          <%= options_for_select(category_list('全部分类'),@category.pid) %>
+        <select name="pid" id="pid" class="length_5 required">
+          <%= options_for_select(category_list('全部分类'), @category.pid) %>
         </select>
       </td>
       <td>
@@ -28,7 +28,7 @@
     <tr>
       <th>类型编码:</th>
       <td>
-        <input type="text" name="code" value="<%= @category.code %>" class="input length_5 input_hd required"/>
+        <input type="text" id="code" name="code" value="<%= @category.code %>" class="input length_5 input_hd required"/>
       </td>
       <td>
         <div class="fun_tips"></div>

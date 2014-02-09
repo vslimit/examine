@@ -11,19 +11,51 @@ class Subject < ActiveRecord::Base
   }
 
 
-  def self.create_subject!(title,air, answer, category_id, subject_type, signs, contents)
-    code = Category.find(params[:category_id]).code << '::' << params[:subject_type]
+  def self.create_subject!(title, air, answer, category_id, subject_type, signs, contents)
+    code = Category.find(category_id).code << '::' << subject_type
     Subject.transaction do
-      subject = Subject.new title: title,air: air, answer: answer, category_id: category_id, subject_type: subject_type, code:code
+      subject = Subject.new title: title, air: air, answer: answer, category_id: category_id, subject_type: subject_type, code: code
       subject.save!
       unless subject_type == 'true-false'
-        contents.each do |content|
-          message_expand = MessageExpand.new
-          message_expand.from= from
-          message_expand.to = user_id
-          message_expand.status=MessageExpand::COMMON
-          message_expand.message = message
-          message_expand.save!
+        if !contents.blank? && contents.length > 0
+          contents.each_index { |i|
+            @answer = Answer.new
+            @answer.content = contents[i]
+            @answer.sign = signs.include?((i).to_s) ? 'Y' : 'N'
+            @answer.subject_id = subject.id
+            @answer.sign_id = i
+            @answer.save!
+          }
+        end
+      end
+      return subject
+    end
+  end
+
+  def self.update_subject!(id,title, air, answer, category_id, subject_type, signs, contents)
+    code = Category.find(category_id).code << '::' << subject_type
+    Subject.transaction do
+      subject = Subject.find(id)
+      #subject = Subject.new title: title, air: air, answer: answer, category_id: category_id, subject_type: subject_type, code: code
+      subject.title = title
+      subject.air = air
+      subject.answer = answer
+      subject.category_id = category_id
+      subject.subject_type = subject_type
+      subject.code = code
+      subject.save!
+
+      unless subject_type == 'true-false'
+        subject.answers.delete_all # 一次砍掉 e 的所有 attendees，不會觸發個別 attendee 的 destroy 回呼
+        if !contents.blank? && contents.length > 0
+          contents.each_index { |i|
+            @answer = Answer.new
+            @answer.content = contents[i]
+            @answer.sign = signs.include?((i).to_s) ? 'Y' : 'N'
+            @answer.subject_id = subject.id
+            @answer.sign_id = i
+            @answer.save!
+          }
         end
       end
       return subject

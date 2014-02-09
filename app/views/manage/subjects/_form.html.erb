@@ -6,27 +6,8 @@
     <%= render :partial => 'subject_form' %>
     <tbody id="single" style="display: none;">
     <%= render :partial => 'single_form' %>
-    <tr>
-      <th>答案:</th>
-      <td>
-        <input type="text" name="answer" value="<%= @subject.answer %>" class="input length_10 input_hd required"/>
-      </td>
-      <td>
-        <div class="fun_tips"></div>
-      </td>
-    </tr>
-    </tbody>
     <tbody id="multiple" style="display: none;">
     <%= render :partial => 'multiple_form' %>
-    <tr>
-      <th>答案:</th>
-      <td>
-        <input type="text" name="answer" value="<%= @subject.answer %>" class="input length_10 input_hd required"/>
-      </td>
-      <td>
-        <div class="fun_tips"></div>
-      </td>
-    </tr>
     </tbody>
 
     <tbody id="true-false" style="display: none;">
@@ -68,7 +49,6 @@
                 $('#multiple').hide();
                 $('#true-false').hide();
             }else if ( $(this).val() == 'multiple') {
-                alert(321);
                 $('#multiple').show();
                 $('#single').hide();
                 $('#true-false').hide();
@@ -90,8 +70,6 @@
     })
 
     var initFields = function (type) {
-        alert(123);
-        alert(type);
         switch (type) {
             case 'true-false' :
                 $('#true-false').show();

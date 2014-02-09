@@ -6,20 +6,16 @@
         <div class="ul_wrap">
           <ul class="cc">
             <li>
-              <label>关键字：</label>
-              <input type="text" class="input length_3" name="title_cont" value="<%= params[:title] %>" />
+              <%= f.label(:title_cont, '关键字') %>
+              <%= f.text_field :title_cont, class: 'input length_3' %>
             </li>
             <li>
               <label>机型：</label>
-              <select name="status">
-                <%= options_for_select(air_list, params[:air]) %>
-              </select>
+              <%= f.select(:air_matches_any,query_air_list)  %>
             </li>
             <li>
               <label>题型：</label>
-              <select name="status">
-                <%= options_for_select(air_list, params[:air]) %>
-              </select>
+              <%= f.select(:subject_type_eq,query_subject_type_list)  %>
             </li>
           </ul>
         </div>

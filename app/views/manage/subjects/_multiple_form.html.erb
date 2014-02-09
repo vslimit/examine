@@ -1,28 +1,25 @@
-<tr class="option">
-  <th><input type="checkbox" name="sign" value="1" class="input length_0 input_hd required">:</th>
-  <td><input type="text" name="content[]" class="input length_10 input_hd required"></td>
-  <td>
-    <div class="fun_tips"></div>
-  </td>
-</tr>
-<tr class="option">
-  <th><input type="checkbox" name="sign" value="2" class="input length_0 input_hd required">:</th>
-  <td><input type="text" name="content[]" class="input length_10 input_hd required"></td>
-  <td>
-    <div class="fun_tips"></div>
-  </td>
-</tr>
-<tr class="option">
-  <th><input type="checkbox" name="sign" value="3" class="input length_0 input_hd required">:</th>
-  <td><input type="text" name="content[]" class="input length_10 input_hd required"></td>
-  <td>
-    <div class="fun_tips"></div>
-  </td>
-</tr>
-<tr class="option">
-  <th><input type="checkbox" name="sign" value="4" class="input length_0 input_hd required">:</th>
-  <td><input type="text" name="content[]" class="input length_10 input_hd required"></td>
-  <td>
-    <div class="fun_tips"></div>
-  </td>
-</tr>
+<% if (@type == 'new') %>
+    <% 4.times.each do |i|%>
+    <tr class="option">
+      <th>
+        <input type="checkbox" name="sign[]" value="<%= i %>" class="input length_0 input_hd required">:
+      </th>
+      <td><input type="text" name="content[]" class="input length_10 input_hd required"></td>
+      <td>
+        <div class="fun_tips"></div>
+      </td>
+    </tr>
+    <% end %>
+<% elsif (@type == 'edit') %>
+    <% if @subject.answers.size > 0 %>
+        <% @subject.answers.each do |answer| %>
+            <tr class="option">
+              <th><input type="checkbox" name="sign[]" value="<%= answer.sign_id %>" <%= answer.sign == 'Y' ? 'checked':'' %>  class="input length_0 input_hd required">:</th>
+              <td><input type="text" name="content[]" value="<%= answer.content %>" class="input length_10 input_hd required"></td>
+              <td>
+                <div class="fun_tips"></div>
+              </td>
+            </tr>
+        <% end %>
+    <% end %>
+<% end %>

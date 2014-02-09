@@ -13,9 +13,14 @@
 <tr>
   <th>题型:</th>
   <td>
-    <select name="subject_type" id="subject_type" class="length_5 required">
-      <%= options_for_select(subject_type_list, @subject.subject_type) %>
-    </select>
+    <% if (@type == 'new') %>
+        <select name="subject_type" id="subject_type" class="length_5 required">
+          <%= options_for_select(subject_type_list, @subject.subject_type) %>
+        </select>
+    <% elsif (@type == 'edit') %>
+        <input name="subject_type" value="<%= @subject.subject_type %>" id="subject_type" type="hidden">
+        <%= Profile.dic_val @subject.subject_type %>
+    <% end %>
   </td>
   <td>
     <div class="fun_tips"></div>

@@ -1,35 +1,65 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>爱刷核心业务平台管理系统 | 用户登录</title>
-    <link href="/css/admin/login.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>机务维修放行考试系统 | 系统登录</title>
+  <link rel="stylesheet" type="text/css" href="/scripts/jquery_fancybox/jquery.fancybox.css"/>
+  <link href="/css/front/login.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
 <div class="wrap">
-    <h1><a href="javascript:;">核心业务平台</a></h1>
-    <%= form_tag "/manage/sessions", method: 'post', id: 'login-form' do %>
+  <h1><a href="javascript:;">机务维修放行考试系统</a></h1>
+  <%= form_tag '/sessions', method: 'post', id: 'login-form' do %>
 
-<div class="login">
+      <div class="login">
         <ul>
-            <li>
-                <input class="input" id="J_admin_name" required name="login" type="text" placeholder="帐号名" title="帐号名" />
-            </li>
-            <li>
-                <input class="input" id="admin_pwd" type="password" required name="password" placeholder="密码" title="密码" />
-            </li>
+          <li>
+            <input class="input" id="J_admin_name" required name="login" type="text" placeholder="帐号名" title="帐号名"/>
+          </li>
+          <li>
+            <input class="input" id="admin_pwd" type="password" required name="password" placeholder="密码" title="密码"/>
+          </li>
+          <li>
+            <input type="checkbox" id="xuzhi" name="xuzhi" class="required">
+            <a class="mr10 various fancybox.iframe" id="agreement-wrap" href="/notices">考试条款</a>
+            <!--<input class="checkbox" id="admin_pwd" type="password" required name="password" />-->
+          </li>
         </ul>
+        <!--<div style="display:none">-->
+        <!--<div id="exam-term">-->
+        <!--试须知放到这里-->
+        <!--ok <br/>-->
+        <!--Yes or no?-->
+        <!--</div>-->
+        <!--</div>-->
         <button type="button" name="" class="btn" id="sub">登录</button>
-    </div>
-        <% end %>
+      </div>
+  <% end %>
 </div>
 <script type="text/javascript" src="/scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/scripts/login.js"></script>
+<script type="text/javascript" src=/scripts/jquery_fancybox/jquery.fancybox.js></script>
 <% if flash[:error] %>
-<script type="text/javascript">
-    alert('<%= flash[:error] %>');
-</script>
+    <script type="text/javascript">
+        alert('<%= flash[:error] %>');
+    </script>
 <% end %>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("a#agreement-wrap").fancybox({
+//            'hideOnContentClick': true
+            fitToView: false,
+            width: '60%',
+            height: '60%',
+            autoSize: false,
+            closeClick: false,
+            openEffect: 'none',
+            closeEffect: 'none',
+            padding: 10,
+            scrolling: 'auto'
+        });
+    })
+</script>
 </body>
 </html>

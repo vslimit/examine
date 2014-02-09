@@ -48,8 +48,13 @@ Examine::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
+  match 'login', to: 'sessions#new', :via => [:get]
+  match 'logout', to: 'sessions#logout', :via => [:get]
+  resource :notices
+  resource :sessions
+  root :to => 'sessions#new'
+  match 'examine', to: 'examines#examine', :via => [:post]
+  resource :examines
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -70,5 +75,6 @@ Examine::Application.routes.draw do
     resources :subjects
     resources :categories
     resources :profiles
+    resources :users
   end
 end

@@ -28,6 +28,7 @@ $(function(){
     $('#sub').click(function(){
         var _username = $('input[name="login"]').val();
         var _password = $('input[name="password"]').val();
+        var _xuzhi = $('input[name="xuzhi"]').val();
 
         if(!_username) {
             alert('请输入你的用户名!');
@@ -38,6 +39,13 @@ $(function(){
             alert('请输入你的密码!');
             return false;
         }
+        if(_xuzhi) {
+            if(!$('input[name=xuzhi]').is(':checked')){
+                alert('请确认同意考试须知!');
+                return false;
+            }
+        }
+
         $('#sub').text('登录中...');
         $('#login-form')[0].submit();
     })

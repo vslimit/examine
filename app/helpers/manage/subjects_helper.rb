@@ -12,7 +12,16 @@ module Manage
       [
           %w(全部 A320,A330),
           %w(A320 A320),
-          %w(A330 A320)
+          %w(A330 A330)
+      ]
+    end
+
+    def query_air_list
+      [
+          ['全部', ''],
+          %w(A320,A330 A320,A330),
+          %w(A320 A320),
+          %w(A330 A330)
       ]
     end
   end

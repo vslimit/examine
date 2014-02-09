@@ -17,10 +17,15 @@ module Manage
     def create
       @category = Category.new
       @category.name = params[:name]
-      @category.code = params[:code]
-      @category.pid = params[:pid]
+      pid = params[:pid]
+      @category.pid = pid
+      code = params[:code]
+      if !pid.blank? && pid.to_i > 0
+        category = Category.find(params[:pid])
+        code = category.code << '<<' <<params[:code]
+      end
+      @category.code = code
       @category.level_value
-
       begin
         if @category.save!
           flash[:success] = Tips::CREATE_SUCCESS
@@ -44,7 +49,14 @@ module Manage
       begin
         @category = Category.find(params[:id])
         @category.name = params[:name]
-        @category.code = params[:code]
+        pid = params[:pid]
+        @category.pid = pid
+        code = params[:code]
+        if !pid.blank? && pid.to_i > 0
+          category = Category.find(params[:pid])
+          code = category.code << '<<' <<params[:code]
+        end
+        @category.code = code
         @category.level_value
         @category.save!
       rescue StandardError => e

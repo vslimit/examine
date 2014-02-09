@@ -18,10 +18,8 @@ module Manage
 
     def create
       @user = User.new
-      @user.login = params[:login]
+      @user.card_no = params[:card_no]
       @user.name = params[:name]
-      @user.role = params[:role]
-      @user.password = params[:password]
 
       begin
         if @user.save!
@@ -40,11 +38,10 @@ module Manage
     def update
       @user = User.find(params[:id])
       @user.name = params[:name]
-      @user.login = params[:login]
-      @user.role = params[:role]
-      @user.password = params[:password] if not params[:password].blank?
+      @user.card_no = params[:card_no]
+      @user.on_line = params[:on_line]
       begin
-        if @admin.save!
+        if @user.save!
           flash[:success] = Tips::UPDATE_SUCCESS
           redirect_to action: :index
         else
@@ -64,7 +61,7 @@ module Manage
       else
         flash[:error] = Tips::DELETE_ERROR
       end
-      redirect_to :root
+      redirect_to action: :index
     end
 
   end
