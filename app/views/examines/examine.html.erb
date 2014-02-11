@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>成绩单打印</title>
+  <link href="/css/admin/score.css" rel="stylesheet" type="text/css">
+  <link href="/css/admin/score.css" rel="stylesheet" type="text/css" media="print">
+</head>
+<body>
+<div class="sc-content">
+  <h1>机务维修系统放行考试成绩单</h1>
+
+  <h1>Maintenance Organization Aircraft Release Examination Report</h1>
+  <hr/>
+
+  <p>身份证号码：<%= @user.card_no %></p>
+
+  <p><%= @user.name %> </p>
+
+  <p>经维修人员放行考试</p>
+
+  <p><%= @examine_profile_hash['air_type'] %>机型系列</p>
+
+  <p>安全题成绩为：</p>
+
+  <p><span><%= @safe_score %></span> 分</p>
+
+  <p>总成绩为：</p>
+
+  <p><span><%= @score %></span> 分</p>
+
+  <p>
+    <span>
+      <%= (@safe_score ==
+       (@score_profile_hash['SAFE::single'].to_i * @subject_profile_hash['SAFE::single'].to_i + @score_profile_hash['SAFE::multiple'].to_i * @subject_profile_hash['SAFE::multiple'].to_i)) && (@score >= @examine_profile_hash['pass_score'].to_i)  ? '通过考试': '未通过考试'
+      %>
+    </span>
+  </p>
+  <!--<p>颁发单位：川航机务工程部质控部</p>-->
+  <!--<p>颁发日期：</p>-->
+</div>
+</body>
+</html>

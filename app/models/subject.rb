@@ -27,6 +27,12 @@ class Subject < ActiveRecord::Base
             @answer.save!
           }
         end
+
+        #Answer.select(:id).where(:subject_id => subject.id)
+        right_answers = []
+        subject.answers.each {|x|right_answers.push(x.id) if x.sign=='Y'; right_answers}
+        subject.answer = right_answers.to_s
+        subject.save!
       end
       return subject
     end

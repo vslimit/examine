@@ -5,6 +5,7 @@ module Manage
       [
           ['题型设置', Profile::SUBJECT_TYPE],
           ['题目设置', Profile::SUBJECT_PROFILE],
+          ['分数设置', Profile::SCORE_PROFILE],
           ['考试设置', Profile::EXAMINE_PROFILE],
       ]
     end

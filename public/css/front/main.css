@@ -144,7 +144,7 @@ a {
     white-space: nowrap;
 }
 .login_info a {
-    color: #f29307;
+    color: #fff;
     margin:0 5px;
 }
 .login_info a:hover {

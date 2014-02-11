@@ -15,6 +15,7 @@ class Tips
   OPERATION_ERROR = '操作失败'
 
   LOGIN_ERROR = '登录失败，用户名或者密码错误'
+  LOGIN_AGAIN = '登录失败，用户已登录，请勿重复登录'
   PASSWORD_ERROR = '密码错误'
   ACCESS_ERROR = '您无权进行该操作'
 end

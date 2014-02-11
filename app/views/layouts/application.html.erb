@@ -13,7 +13,7 @@
   <link href="/scripts/easyui/themes/default/easyui.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="/scripts/jquery_ui_datepicker/js/jquery-ui-1.10.3.min.js"></script>
 </head>
-<body oncontextmenu="return(false)"  onkeydown="KeyDown()">
+<body>
 <div class="wrap">
   <noscript><h1 class="noscript">您已禁用脚本，这样会导致页面不可用，请启用脚本后刷新页面</h1></noscript>
   <table width="100%" height="100%" style="table-layout:fixed;">
@@ -35,7 +35,7 @@
         <div class="login_info">
           <a href="javascript:;" class="mr10"><%= curr_user %></a>
           <!--<a href="/manage/admins/pwd" class="mr10 various fancybox.iframe" >[修改密码]</a>-->
-          <a href="/manage/logout" class="mr10" onclick="return confirm('你确定要退出吗?')">[注销]</a>
+          <a href="/logout" class="mr10" onclick="return confirm('你确定要退出吗?')">[注销]</a>
         </div>
       </td>
     </tr>
@@ -91,36 +91,6 @@
 <script type="text/javascript" src="/scripts/jquery.blockUI.js"></script>
 <script type="text/javascript" src="/scripts/main.js"></script>
 <script type="text/javascript" src="/scripts/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript">
-    /***************************************************************************
-     *   函数名称： KeyDown()
-     *   参数是：            无
-     *   功能：  屏蔽一些毽子
-     *   返回的值： 有返回真，没有返回假
-     ****************************************************************************/
-    function KeyDown() {
-        if ((window.event.altKey) &&
-                ((window.event.keyCode == 37) ||         //屏蔽   Alt+   方向键   ←
-                        (window.event.keyCode == 39))) {
-            event.keyCode = 0;
-            event.returnValue = false;
-        }
-        if (event.keyCode == 116 || event.keyCode == 122 || event.keyCode == 8)           //屏蔽   F5,F11,后退键   刷新键
-        {
-            event.keyCode = 0;
-            event.returnValue = false;
-        }
-        if ((event.keyCode == 37) || event.keyCode == 39) {
-            event.keyCode = 0;
-            event.returnValue = false;
-        }
-        if ((window.event.altKey) && (window.event.keyCode == 115)) {
-            event.keyCode = 0;
-            event.returnValue = false;
-        }
 
-        return   true;
-    }
-</script>
 </body>
 </html>

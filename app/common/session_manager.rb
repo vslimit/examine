@@ -3,13 +3,18 @@ module SessionManager
   def create_session(user)
     session[:user] = {
         :id => user.id,
-        :username => user.name,
+        :name => user.name,
         :card_no => user.card_no
     }
   end
 
   def destroy_session
-    session.clear
+    user = User.find(session[:user][:id])
+    user.on_line = User::OFF
+    user.session_id = ''
+    user.save!
+    session[:user] = nil
+    #session.clear
   end
 
   def current_user
