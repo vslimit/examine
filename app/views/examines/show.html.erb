@@ -19,8 +19,7 @@
   <% @safe_subjects.each do |subject| %>
       <div class="h_a">
         <%= i+=1 %>.(安全题)<%= subject.title %>
-        <input type="hidden" name="no[]" value="">
-
+        <input type="hidden" name="no[]" value="<%= subject.id %>">
       </div>
       <ul class="cross">
         <% subject.answers.shuffle.each_with_index do |answer, i| %>
@@ -32,7 +31,10 @@
       </ul>
   <% end %>
   <% @else_subjects.shuffle.each do |subject| %>
-      <div class="h_a"><%= i+=1 %>.<%= subject.title %></div>
+      <div class="h_a">
+        <%= i+=1 %>.<%= subject.title %>
+        <input type="hidden" name="no[]" value="<%= subject.id %>">
+      </div>
       <ul class="cross">
         <% subject.answers.shuffle.each_with_index do |answer, i| %>
             <li class="f14">

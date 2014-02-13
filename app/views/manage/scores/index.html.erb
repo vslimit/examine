@@ -1,0 +1,54 @@
+<div class="search_type cc mb10">
+  <div class="h_a">用户成绩列表</div>
+</div>
+
+<div class="table_list">
+  <table width="100%">
+    <!--<colgroup>-->
+      <!--<col/>-->
+      <!--<col/>-->
+      <!--<col/>-->
+      <!--<col/>-->
+    <!--</colgroup>-->
+    <thead>
+    <tr>
+      <td>ID</td>
+      <td>基础执照号</td>
+      <td>姓名</td>
+      <td>安全成绩</td>
+      <td>总成绩</td>
+      <td>状态</td>
+      <td>原因</td>
+      <td>机型</td>
+      <td>考试日期</td>
+      <td>开考日期</td>
+      <td>操作</td>
+    </tr>
+    </thead>
+    <% @scores.each do |score| %>
+        <tr>
+          <td><%= score.id %></td>
+          <td><%= score.user.card_no %></td>
+          <td><%= score.user.name %></td>
+          <td><%= score.totle_score %></td>
+          <td><%= score.all_score %></td>
+          <td><%= score.status %></td>
+          <td><%= score.reason %></td>
+          <td><%= score.air %></td>
+          <td><%= score.exam_date %></td>
+          <td><%= score.examine_date %></td>
+          <td>
+            <a href="/manage/scores/<%= score.id %>" target="_blank" class="btn btn_success">成绩单</a>
+            <%= link_to '删除',
+                      {:controller => :scores, :action => 'destroy', :id => score.id},
+                      {:method => :delete, :confirm => '你确定要删除此用户成绩吗?', :class => 'btn btn_error'}
+          %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+<!--<div><a href="/manage/admins/new" class="btn"><span class="add"></span>新增用户</a></div>-->
+<div class="p10 pages">
+  <%= will_paginate @scores %>
+</div>

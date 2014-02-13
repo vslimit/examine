@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203174651) do
+ActiveRecord::Schema.define(:version => 20140213042510) do
 
   create_table "admins", :force => true do |t|
     t.string   "login"
@@ -58,8 +58,9 @@ ActiveRecord::Schema.define(:version => 20140203174651) do
     t.string   "exam_date"
     t.string   "air"
     t.string   "subjects"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "examine_date"
   end
 
   create_table "subjects", :force => true do |t|
@@ -76,12 +77,8 @@ ActiveRecord::Schema.define(:version => 20140203174651) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.integer  "score"
     t.string   "status"
-    t.string   "reason"
     t.string   "card_no"
-    t.string   "exam_date"
-    t.string   "air"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "session_id"

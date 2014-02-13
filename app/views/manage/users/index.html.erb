@@ -24,12 +24,15 @@
           <td><%= user.id %></td>
           <td><%= user.card_no %></td>
           <td><%= user.name %></td>
-          <td><%= user.status %></td>
-          <td><a href="/manage/users/<%= user.id %>/edit" class="btn btn_success">编辑</a>
-          <%= link_to '删除',
-                      {:controller => :users, :action => 'destroy', :id => user.id},
-                      {:method => :delete, :confirm => '你确定要删除此用户吗?', :class => 'btn btn_error'}
-          %>
+          <td><%= user.on_line == 'on' ? '在线' : '离线' %></td>
+          <td>
+            <a href="/manage/users/<%= user.id %>/edit" class="btn btn_success">编辑</a>
+            <a href="/manage/users/<%= user.id %>/off" class="btn btn_submit">离线</a>
+            <a href="/manage/users/<%= user.id %>/score" class="btn btn_success" target="_blank">成绩单</a>
+            <%= link_to '删除',
+                        {:controller => :users, :action => 'destroy', :id => user.id},
+                        {:method => :delete, :confirm => '你确定要删除此用户吗?', :class => 'btn btn_error'}
+            %>
           </td>
         </tr>
     <% end %>

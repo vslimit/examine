@@ -54,6 +54,7 @@ Examine::Application.routes.draw do
   resource :sessions
   root :to => 'sessions#new'
   match 'examine', to: 'examines#examine', :via => [:post]
+  match 'score', to: 'examines#score', :via => [:get]
   resource :examines
   # See how all your routes lay out with "rake routes"
 
@@ -63,7 +64,6 @@ Examine::Application.routes.draw do
   namespace :manage do
     match 'logout', to: 'sessions#logout', :via => [:get]
     match 'login', to: 'sessions#new', :via => [:get]
-
 
     resource :sessions
 
@@ -75,6 +75,9 @@ Examine::Application.routes.draw do
     resources :subjects
     resources :categories
     resources :profiles
+    match 'users/:id/off',to:'users#off_line'
+    match 'users/:id/score',to:'users#score'
     resources :users
+    resources :scores
   end
 end

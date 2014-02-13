@@ -21,21 +21,12 @@
 
   <p><%= @score.air %>机型系列</p>
 
-  <p>安全题成绩为：</p>
+  <p>笔试成绩为：</p>
 
   <p><span><%= @score.totle_score %></span> 分</p>
 
-  <p>总成绩为：</p>
-
-  <p><span><%= @score.all_score %></span> 分</p>
-
-  <p>
-    <span>
-      <%= @score.status %>
-    </span>
-  </p>
-  <!--<p>颁发单位：川航机务工程部质控部</p>-->
-  <!--<p>颁发日期：</p>-->
+  <p>颁发单位：川航机务工程部质控部</p>
+  <p>颁发日期：<%= date_text Time.now %></p>
 </div>
 </body>
 </html>

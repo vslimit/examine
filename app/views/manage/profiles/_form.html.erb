@@ -26,9 +26,15 @@
     </tr>
 
     <tr>
-      <th>配置值:</th>
+      <th>配置值:<br/></th>
       <td>
-        <input type="text" name="dic_value" value="<%= @profile.dic_value %>" class="input length_5 input_hd required"/>
+        <% if (@profile.dic_key!='examine_notice') %>
+            <input type="text" name="dic_value" value="<%= @profile.dic_value %>" class="input length_5 input_hd required <%= @profile.dic_key=='examine_date' ? 'datepicker' : '' %>"/>
+        <%
+           elsif (@profile.dic_key=='examine_notice')
+        %>
+           <textarea name="dic_value" class="textarea length_5 input_hd required"><%= @profile.dic_value %></textarea>
+        <% end %>
       </td>
       <td>
         <div class="fun_tips"></div>

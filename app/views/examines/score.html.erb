@@ -17,9 +17,9 @@
 
   <p><%= @score.user.name %> </p>
 
-  <p>经<%= @score.examine_date %>维修人员放行考试</p>
+  <p>经<%= @examine_profile_hash['examine_date'] %>维修人员放行考试</p>
 
-  <p><%= @score.air %>机型系列</p>
+  <p><%= @examine_profile_hash['air_type'] %>机型系列</p>
 
   <p>安全题成绩为：</p>
 

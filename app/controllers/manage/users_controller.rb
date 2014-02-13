@@ -1,7 +1,7 @@
 module Manage
   class UsersController < ApplicationController
 
-    #layout 'fancybox' ,:only => [:pwd,:reset_password]
+    layout :false, :only => [:score]
     def index
       page_info = get_paging_order_info
       @search = User.search(params[:q])
@@ -62,6 +62,21 @@ module Manage
         flash[:error] = Tips::DELETE_ERROR
       end
       redirect_to action: :index
+    end
+
+    def off_line
+      @user = User.find(params[:id])
+      @user.on_line = User::OFF
+      @user.session_id = ''
+      @user.save!
+      flash[:success] = Tips::UPDATE_SUCCESS
+      redirect_to action: :index
+    end
+
+    def score
+      @user = User.find(params[:id])
+      @score = @user.scores.last
+      render '/manage/scores/show'
     end
 
   end

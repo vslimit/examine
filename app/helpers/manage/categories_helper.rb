@@ -5,9 +5,9 @@ module Manage
       datetime.localtime.strftime('%Y-%-m-%-d %H:%M:%S') unless datetime.nil?
     end
 
-    def date_text(date)
-      date.localtime.strftime('%Y-%-m-%-d') unless date.nil?
-    end
+    #def date_text(date)
+    #  date.localtime.strftime('%Y-%-m-%-d') unless date.nil?
+    #end
 
     def category_list(first_option_text = '', level = Category::FIRST_LEVEL)
       categories = []

@@ -43,7 +43,7 @@ module Manage
         @profile.dic_key = params[:dic_key]
         @profile.dic_value = params[:dic_value]
         @profile.dic_type = params[:dic_type]
-        @profile.dic_type_name = params[:dic_type_name]
+        #@profile.dic_type_name = params[:dic_type_name]
         @profile.save!
       rescue StandardError => e
         flash[:error] = e.message

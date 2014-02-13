@@ -16,6 +16,10 @@ class Tips
 
   LOGIN_ERROR = '登录失败，用户名或者密码错误'
   LOGIN_AGAIN = '登录失败，用户已登录，请勿重复登录'
+  LOGIN_NO_START = '本次考试暂未开始，请耐心等候'
   PASSWORD_ERROR = '密码错误'
   ACCESS_ERROR = '您无权进行该操作'
+  NO_SAFE_PASS = '安全考试未通过'
+  NO_PASS = '未通过考试'
+  PASS = '通过考试'
 end
