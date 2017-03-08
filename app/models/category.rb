@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :code, :name, :pid, :level
+  # attr_accessible :code, :name, :pid, :level
 
   has_many :subjects
   FIRST_LEVEL = 1

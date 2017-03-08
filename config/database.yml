@@ -28,7 +28,7 @@ test:
   database: examine_test
   pool: 5
   username: root
-  password:
+  password: '123'
   socket: /tmp/mysql.sock
 
 production:

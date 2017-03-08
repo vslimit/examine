@@ -1,6 +1,6 @@
 #encoding:utf-8
 class Subject < ActiveRecord::Base
-  attr_accessible :air, :answer, :category_id, :code, :title, :subject_type, :tag
+  # attr_accessible :air, :answer, :category_id, :code, :title, :subject_type, :tag
 
   belongs_to :category
   has_many :answers, dependent: :destroy
